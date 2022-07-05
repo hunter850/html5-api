@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect {
+            width: 640px;
+            height: 480px;
+            background-color: skyblue;
+            font-size: 0px;
+            position: relative;
+        }
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: orange;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .rect2 {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+        <div class="ball" draggable="true">1</div>
+        <div class="ball" draggable="true">2</div>
+        <div class="ball" draggable="true">3</div>
+        <div class="rect2"></div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script>
+        $balls = $(".ball");
+        $rect2 = $(".rect2");
+        const handler = event => {
+            console.log("target: ",event.originalEvent.currentTarget, "\ntype: ", event.originalEvent.type);
+        }
+        $balls.on("dragstart", handler);
+        // $balls.on("drag", handler);
+        $balls.on("dragend", handler);
+
+        $rect2.on("dragenter", handler);
+        $rect2.on("dragover", function(event) {
+            event.preventDefault();
+        });
+        $rect2.on("dragleave", handler);
+        $rect2.on("drop", handler);
+    </script>
+</body>
+</html>

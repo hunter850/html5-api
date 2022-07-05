@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect {
+            width: 640px;
+            height: 480px;
+            background-color: skyblue;
+            font-size: 0px;
+        }
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: orange;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect">
+        <div class="ball" draggable="true">1</div>
+        <div class="ball" draggable="true">2</div>
+        <div class="ball" draggable="true">3</div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script>
+        const handler = event => {
+            console.log("target: ",event.currentTarget, "\ntype: ", event.type);
+        }
+        $(".ball").on("dragstart", handler);
+        // $(".ball").on("drag", handler);
+        $(".ball").on("dragend", handler);
+    </script>
+</body>
+</html>
