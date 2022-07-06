@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="saveData()">save data</button>
+    <br>
+    <pre></pre>
+
+
+
+    <script>
+        function saveData() {
+            const k = 'mykey-' + Date.now();
+            const v = Math.random();
+            sessionStorage.setItem(k, v);
+        }
+        const pre = document.querySelector("pre");
+        for(let i = 0; i < sessionStorage.length; i++) {
+            const k = sessionStorage.key(i);
+            const v = sessionStorage.getItem(k);
+            pre.innerHTML += `
+                <div>${k}: ${v}</div>
+            `;
+        }
+
+
+
+    </script>
+</body>
+
+</html>
