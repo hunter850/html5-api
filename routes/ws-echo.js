@@ -8,6 +8,10 @@ const createEchoServer = server=>{
 		ws.on('message', message=>{
 			ws.send(message.toString());
 		});
+		ws.on("close", (event) => {
+			console.log({event});
+			console.log('onclose連線數:', wsServer.clients.size);
+		})
 		ws.send('連線了!');
 	});
 };

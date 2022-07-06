@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-
+require('dotenv').config();
+const {PORT} = process.env;
 /**
  * Module dependencies.
  */
@@ -12,7 +13,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3300');
+var port = normalizePort(PORT || '3300');
 app.set('port', port);
 
 /**
@@ -29,8 +30,8 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-require('../routes/ws-echo')(server);
-// require('../routes/ws-chat')(server);
+// require('../routes/ws-echo')(server);
+require('../routes/ws-chat')(server);
 // require('../routes/ws-draw')(server);
 /**
  * Normalize a port into a number, string, or false.
